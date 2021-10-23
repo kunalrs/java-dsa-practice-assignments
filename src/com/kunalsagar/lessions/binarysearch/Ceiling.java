@@ -1,13 +1,18 @@
 package com.kunalsagar.lessions.binarysearch;
 
-public class OrderAgnosticBinarySearch {
+public class Ceiling {
 
     public static void main(String[] args) {
-        var arr = new int[] {1,3,5,6};
-        System.out.println(search(arr, 9));
+        var arr = new int[] {1, 2, 5};
+        System.out.println(ceiling(arr, 3));
     }
 
-    static int search(int[] nums, int target) {
+    // return index of the greatest no. <= target
+    static int ceiling(int[] nums, int target) {
+
+        if(target < nums[0])
+            return -1;
+
         var start = 0;
         var end = nums.length - 1;
         var isAsc = nums[start] < nums[end];
@@ -30,6 +35,6 @@ public class OrderAgnosticBinarySearch {
             }
         }
 
-        return -1;
+        return start;
     }
 }
