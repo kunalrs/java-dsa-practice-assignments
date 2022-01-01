@@ -1,16 +1,15 @@
 package com.kunalsagar.assignments.arrays;
 
 import java.util.Arrays;
-import java.util.Scanner;
-
 /**
- * LeetCode URL: https://leetcode.com/problems/two-sum/
+ * Leet Code https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
  * */
-public class TwoSum {
+public class TwoSumII {
+
     public static void main(String[] args) {
-        var nums = new int[]{3,3};
-        var target = 6;
-        System.out.println(Arrays.toString(twoSum(nums, target)));
+        var numbers = new int[] {2,7,11,15};
+        var target = 9;
+        System.out.println(Arrays.toString(twoSum(numbers, target)));
     }
 
     public static int[] twoSum(int[] numbers, int target) {
@@ -24,6 +23,6 @@ public class TwoSum {
                 }
             }
         }
-        return new int[] {a, b};
+        return new int[] {a + 1, b + 1};
     }
 }
