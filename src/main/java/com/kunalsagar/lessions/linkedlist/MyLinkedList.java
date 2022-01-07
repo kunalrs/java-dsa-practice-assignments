@@ -4,119 +4,58 @@ package com.kunalsagar.lessions.linkedlist;
 public class MyLinkedList {
 
     ListNode head;
+    ListNode tail;
+    int count;
 
     public MyLinkedList() {
-
+        head = new ListNode(-1);
+        tail = new ListNode(-1);
+        head.next = tail;
+        tail.prev = head;
+        count = 0;
     }
 
     public int get(int index) {
+        if(index < 0 || index >= count)
+            return -1;
 
-        var i = 0;
-        var current = head;
-        while(current != null) {
-            if(i == index)
-                return current.getVal();
-
-            current = current.getNext();
+        ListNode curr = head.next;
+        int i = 0;
+        while(i < index) {
             i++;
+            curr = curr.next;
         }
-        return -1;
+
+        return curr.val;
     }
 
     public void addAtHead(int val) {
         ListNode node = new ListNode(val);
-        if(head != null) {
-            node.setNext(head);
-        }
-        head = node;
+        
     }
 
     public void addAtTail(int val) {
-        ListNode node = new ListNode(val);
 
-        if(head == null) {
-            head = node;
-            return;
-        }
-
-        var current = head;
-        while(current != null) {
-
-            if(current.getNext() == null) {
-                current.setNext(node);
-                return;
-            }
-            current = current.getNext();
-        }
 
     }
 
     public void addAtIndex(int index, int val) {
-        var current = head;
-        ListNode prev = null;
-        var i = 0;
-        while(current != null) {
-            if(i + 1 == index) {
-                ListNode node = new ListNode(val);
-                if(prev != null) {
-                    prev.setNext(node);
-                    node.setNext(current);
-                    return;
-                }
-            }
-            prev = current;
-            current = current.getNext();
-            i++;
-        }
 
-        if(i + 1 == val) {
-            ListNode node = new ListNode(val);
-            current.setNext(node);
-        }
     }
 
     public void deleteAtIndex(int index) {
-        var i = 0;
-        var current = head;
-        ListNode prev = null;
-        while(current != null) {
-            if(i == index){
-                if(prev != null)
-                    prev.setNext(current.getNext());
-            }
-            prev = current;
-            current = current.getNext();
-            i++;
-        }
+
     }
 }
 
 class ListNode {
-    private int val;
-    private ListNode next;
+    int val;
+    ListNode next;
+    ListNode prev;
 
     public ListNode(int val) {
         this.val = val;
-    }
-
-    public ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-
-    public int getVal() {
-        return val;
-    }
-
-    public void setVal(int val) {
-        this.val = val;
-    }
-
-    public ListNode getNext() {
-        return next;
-    }
-
-    public void setNext(ListNode next) {
-        this.next = next;
+        this.next = null;
+        this.prev = null;
     }
 }
